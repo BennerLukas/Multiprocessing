@@ -51,7 +51,7 @@ print(f'Zeit: {(time.time()-t0):.8f}s')
 #     return x**2
 
 # if __name__ == '__main__':
-#     with  Pool(1) as p:
+#     with  Pool(5) as p:
 #         print(p.map(f,[1,2,3,4,6,5]))
 
 # t0=time.time()
