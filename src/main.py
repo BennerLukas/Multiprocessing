@@ -16,24 +16,26 @@ def calc_distance(x1, x2):
     
     return distance
 
-def get_distances(x1, points):
-    'calculate distance to every other point'
+def get_distances_multi(x1, points):
+    'calculate distance to every other point with mutliprocessing'
     pass
 
-
+def get_distances_classic(x1, points):
+    'calculate distance to every other point without mutliprocessing'
+    pass
 
 
 #---------------main-------------------#
 t0=time.time()
 
-x1= np.array([1,1])
-x2=np.array([1,3])
+x1= np.array([1,1,1])
+x2=np.array([1,3,2])
 
 
 print(calc_distance(x1,x2))
 
 
-print(f'Zeit: {(time.time()-t0):.5f}s')
+print(f'Zeit: {(time.time()-t0):.8f}s')
 
 
 
