@@ -68,10 +68,14 @@ time_multi=[]
 time_classic = [0.00014328956604003906, 0.0011646747589111328, 0.011996269226074219, 0.10965776443481445, 1.0850849151611328, 5.082998991012573, 9.964872121810913]
 time_multi = [0.12496590614318848, 0.12216591835021973, 0.11765193939208984, 0.11903810501098633, 0.4630908966064453, 2.0164098739624023, 4.603604793548584]
 
-plt.plot(number_of_points,time_classic)
-plt.plot(number_of_points,time_multi)
+plt.plot(number_of_points,time_classic,"-o")
+plt.plot(number_of_points,time_multi,"-o")
 plt.ticklabel_format(style="plain")
+plt.legend(["single","multi"])
+plt.xlabel("Anzahl der Punkte")
+plt.ylabel("Zeit")
+plt.title("Laufzeit Vergleich")
 #plt.show()
-#plt.savefig("data.png")
+plt.savefig("Laufzeit.svg")
 
 #print(f'Zeit: {(time.time()-t0):.8f}s')
