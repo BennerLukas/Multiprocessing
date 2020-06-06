@@ -43,7 +43,7 @@ def get_distances_classic(x1, points):
     distances = []
     t5 = time.time()
     for p in points:
-        distance = calc_distance_classic(x1,p)
+        distance = calc_distance(x1,p)
         distances.append(distance)
     #print(distances)
     distances.sort()
@@ -56,22 +56,26 @@ number_of_points = [10,100,1000,10000,100000,500000,1000000]
 x1= np.array([x for x in range(3)])
 time_classic=[]
 time_multi=[]
-#for x in number_of_points:
-   # points = create_points(n=x)
-    #time_1 = get_distances_classic(x1,points)
-    #time_classic.append(time_1)
-    #time_2 = get_distances_multi(x1,points)
-    #time_multi.append(time_2)
+for x in number_of_points:
+   points = create_points(n=x)
+   time_1 = get_distances_classic(x1,points)
+   time_classic.append(time_1)
+   time_2 = get_distances_multi(x1,points)
+   time_multi.append(time_2)
 #print(time_classic)
 #print(time_multi)
 
-time_classic = [0.00014328956604003906, 0.0011646747589111328, 0.011996269226074219, 0.10965776443481445, 1.0850849151611328, 5.082998991012573, 9.964872121810913]
-time_multi = [0.12496590614318848, 0.12216591835021973, 0.11765193939208984, 0.11903810501098633, 0.4630908966064453, 2.0164098739624023, 4.603604793548584]
+#time_classic = [0.00014328956604003906, 0.0011646747589111328, 0.011996269226074219, 0.10965776443481445, 1.0850849151611328, 5.082998991012573, 9.964872121810913]
+#time_multi = [0.12496590614318848, 0.12216591835021973, 0.11765193939208984, 0.11903810501098633, 0.4630908966064453, 2.0164098739624023, 4.603604793548584]
 
-plt.plot(number_of_points,time_classic)
-plt.plot(number_of_points,time_multi)
+plt.plot(number_of_points,time_classic,"-o")
+plt.plot(number_of_points,time_multi,"-o")
 plt.ticklabel_format(style="plain")
-#plt.show()
-#plt.savefig("data.png")
+plt.legend(["single","multi"])
+plt.xlabel("Anzahl der Punkte")
+plt.ylabel("Zeit")
+plt.title("Laufzeit Vergleich")
+plt.show()
+#plt.savefig("Laufzeit.svg")
 
 #print(f'Zeit: {(time.time()-t0):.8f}s')
