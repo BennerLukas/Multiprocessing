@@ -52,7 +52,7 @@ def get_distances_classic(x1, points):
 
 
 #---------------main-------------------#
-number_of_points = [10,100,1000,10000,100000,500000,1000000]
+number_of_points = [10,100,1000,10000,50000,100000,150000,200000,250000,500000,750000,1000000]
 x1= np.array([x for x in range(3)])
 time_classic=[]
 time_multi=[]
