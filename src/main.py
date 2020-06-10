@@ -24,19 +24,19 @@ def calc_distance_classic(x1,x2):
         distance += (x1[i] - x2[i] )**2
     return math.sqrt(distance)
 
-def get_distances_multi(x1, points):
+def get_distances_multi(x1, points, pools):
     'calculate distance to every other point with mutliprocessing'
     print("--Berechne Abstand (multi)--")
     distances = []
     t0 = time.time()
     if __name__ == '__main__':
-        with Pool(10) as p:
+        with Pool(pools) as p:
             distance = p.starmap(calc_distance,[(x1,p) for p in points])
             distances.append(distance)
     distances.sort()
-    print(f'Zeit (Multiprocessing): {(time.time()-t0):.8f}s')
-    return distances
-
+    t= time.time()-t0
+    print(f'Zeit (singleprocessing): {t:.8f}s')
+    return distances, t
 def get_distances_classic(x1, points):
     'calculate distance to every other point without mutliprocessing'
     print("--Berechne Abstand (single)--")
@@ -46,8 +46,9 @@ def get_distances_classic(x1, points):
         distance = calc_distance_classic(x1,p)
         distances.append(distance)
     distances.sort()
-    print(f'Zeit (singleprocessing): {(time.time()-t0):.8f}s')
-    return distances
+    t= time.time()-t0
+    print(f'Zeit (singleprocessing): {t:.8f}s')
+    return distances, t
 
 
 #---------------main-------------------#
@@ -57,8 +58,13 @@ def get_distances_classic(x1, points):
 if __name__ == '__main__':  
     x1= np.array([x for x in range(3)]) #Testkoordinate
     points = create_points()
-    get_distances_classic(x1,points)
-    get_distances_multi(x1,points)
+
+    pools = int(input("Anzahl Pools: "))
+
+    _, t_classic =get_distances_classic(x1,points)
+    _, t_multi =get_distances_multi(x1,points, pools)
+
+    print(f"Prozentualer Unterschied: {((1-(t_multi/ t_classic))*100):.2f}%")
 
 
 
