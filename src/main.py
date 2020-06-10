@@ -37,6 +37,7 @@ def get_distances_multi(x1, points, pools):
     t= time.time()-t0
     print(f'Zeit (singleprocessing): {t:.8f}s')
     return distances, t
+
 def get_distances_classic(x1, points):
     'calculate distance to every other point without mutliprocessing'
     print("--Berechne Abstand (single)--")
@@ -56,14 +57,20 @@ def get_distances_classic(x1, points):
 
 
 if __name__ == '__main__':  
-    x1= np.array([x for x in range(3)]) #Testkoordinate
+    #create data
+    x1= np.array([x for x in range(3)]) 
     points = create_points()
 
+    # choose number of pools (depending on core count (ideal should be 10))
     pools = int(input("Anzahl Pools: "))
 
+    # calculate distance serial / classic
     _, t_classic =get_distances_classic(x1,points)
+
+    # calculate distance with mutliprocessing and pools
     _, t_multi =get_distances_multi(x1,points, pools)
 
+    # calculate difference
     print(f"Prozentualer Unterschied: {((1-(t_multi/ t_classic))*100):.2f}%")
 
 
