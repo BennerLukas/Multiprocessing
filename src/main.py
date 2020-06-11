@@ -18,13 +18,6 @@ def calc_distance(x1, x2):
     distance = np.linalg.norm(x1-x2)
     return distance
 
-def calc_distance_classic(x1,x2):
-    
-    distance=0
-    for i in range(len(x1)):
-        distance += (x1[i] - x2[i] )**2
-    return math.sqrt(distance)
-
 def get_distances_multi(x1, points, pools):
     'calculate distance to every other point with mutliprocessing'
     print("--Berechne Abstand (multi)--")
@@ -45,7 +38,7 @@ def get_distances_classic(x1, points):
     distances = []
     t0 = time.time()
     for p in points:
-        distance = calc_distance_classic(x1,p)
+        distance = calc_distance(x1,p)
         distances.append(distance)
     distances.sort()
     t= time.time()-t0
