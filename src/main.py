@@ -1,3 +1,4 @@
+# used libraries:
 import numpy as np 
 import time
 import math
@@ -5,7 +6,7 @@ from multiprocessing import Pool
 
 
 
-
+#function definitions:
 def create_points(n=1000000,dimension=3):
     print("--Create Points--")
     'creates 3D Points'
@@ -52,9 +53,9 @@ def get_distances_classic(x1, points):
     return distances, t
 
 
+
+
 #---------------main-------------------#
-
-
 
 if __name__ == '__main__':  
     #create data
