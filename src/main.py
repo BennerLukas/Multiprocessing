@@ -7,7 +7,7 @@ from multiprocessing import Pool
 
 
 #function definitions:
-def create_points(n=1000000,dimension=3):
+def create_points(n=5000000,dimension=3):
     print("--Create Points--")
     'creates 3D Points'
     points = 10* np.random.rand(n,dimension)
@@ -29,7 +29,7 @@ def get_distances_multi(x1, points, pools):
             distances.append(distance)
     distances.sort()
     t= time.time()-t0
-    print(f'Zeit (singleprocessing): {t:.8f}s')
+    print(f'Zeit (multiprocessing): {t:.8f}s')
     return distances, t
 
 def get_distances_classic(x1, points):
