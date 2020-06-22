@@ -29,7 +29,7 @@ def get_distances_multi(x1, points, pools):
             distances.append(distance)
     distances.sort()
     t= time.time()-t0
-    print(f'Zeit (singleprocessing): {t:.8f}s')
+    print(f'Zeit (multiprocessing): {t:.8f}s')
     return distances, t
 
 def get_distances_classic(x1, points):
