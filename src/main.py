@@ -7,7 +7,7 @@ from multiprocessing import Pool
 
 
 #function definitions:
-def create_points(n=5000000,dimension=3):
+def create_points(n=1000000,dimension=3):
     print("--Create Points--")
     'creates 3D Points'
     points = 10* np.random.rand(n,dimension)
