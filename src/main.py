@@ -1,7 +1,6 @@
 # used libraries:
 import numpy as np 
 import time
-import math
 from multiprocessing import Pool
 
 
@@ -51,13 +50,15 @@ def get_distances_classic(x1, points):
 #---------------main-------------------#
 
 if __name__ == '__main__':  
-    #create data
-    x1= np.array([x for x in range(3)]) 
-    points = create_points()
+    
 
     # choose number of pools (depending on core count (ideal should be 10))
     pools = int(input("Anzahl Pools: "))
+    n = int(input("Anzahl Punkte: "))
 
+    #create data
+    x1= np.array([x for x in range(3)]) 
+    points = create_points(n)
     # calculate distance serial / classic
     _, t_classic =get_distances_classic(x1,points)
 
