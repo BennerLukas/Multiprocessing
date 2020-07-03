@@ -22,10 +22,10 @@ def get_distances_multi(x1, points, pools):
     print("--Berechne Abstand (multi)--")
     distances = []
     t0 = time.time()
-    if __name__ == '__main__':
-        with Pool(pools) as p:
-            distance = p.starmap(calc_distance,[(x1,p) for p in points])
-            distances.append(distance)
+    
+    with Pool(pools) as p:
+        distance = p.starmap(calc_distance,[(x1,p) for p in points])
+        distances.append(distance)
     distances.sort()
     t= time.time()-t0
     print(f'Zeit (multiprocessing): {t:.8f}s')
